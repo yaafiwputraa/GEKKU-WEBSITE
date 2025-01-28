@@ -13,15 +13,20 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
 
-export function UserMenu() {
+interface UserMenuProps {
+  isHomePage?: boolean;
+}
+
+export function UserMenu({ isHomePage = false }: UserMenuProps) {
   const { data: session } = useSession()
   const isAdmin = session?.user?.role === "ADMIN" || session?.user?.role === "SUPERADMIN"
+  const textColorClass = isHomePage ? "text-white" : "text-gray-800"
 
   if (!session) {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="icon" className="text-white">
+          <Button variant="ghost" size="icon" className={textColorClass}>
             <User className="h-5 w-5" />
             <span className="sr-only">User menu</span>
           </Button>
@@ -43,7 +48,7 @@ export function UserMenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="text-white relative">
+        <Button variant="ghost" size="icon" className={`${textColorClass} relative`}>
           <User className="h-5 w-5" />
           {isAdmin && <span className="absolute -top-1 -right-1 bg-primary w-2 h-2 rounded-full" />}
           <span className="sr-only">User menu</span>
@@ -96,4 +101,3 @@ export function UserMenu() {
     </DropdownMenu>
   )
 }
-

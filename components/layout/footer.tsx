@@ -1,3 +1,4 @@
+// components/layout/footer.tsx
 import React from 'react';
 import { Instagram, Phone } from 'lucide-react';
 

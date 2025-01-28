@@ -1,5 +1,4 @@
 import { Inter } from "next/font/google"
-
 import { AuthProvider } from "@/components/providers/auth-provider"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
@@ -34,4 +33,3 @@ export default function RootLayout({
     </html>
   )
 }
-
